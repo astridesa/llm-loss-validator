@@ -238,6 +238,7 @@ def clean_model_cache(
     except (OSError, shutil.Error) as e:
         logger.error(f"Failed to clean up the local model cache: {e}")
 
+
 def check_if_thinking_mode(eval_file: str) -> bool:
     """
     Check if the evaluation file is in thinking mode.
@@ -317,7 +318,9 @@ def validate(
         if "Qwen3" in model_name_or_path:
             thinking_mode = check_if_thinking_mode(eval_file)
             if not thinking_mode:
-                logger.info("The dataset is not in thinking mode, setting no_think mode")
+                logger.info(
+                    "The dataset is not in thinking mode, setting no_think mode"
+                )
                 base_model = "qwen3"
 
             # template for thinking mode is the same as qwen1.5
